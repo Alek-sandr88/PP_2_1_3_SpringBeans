@@ -1,23 +1,23 @@
 package app.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AnimalsCage {
     private final Animal animal;
-    private final Timer timer;
+    @Autowired
+    private Timer timer;
 
-    public AnimalsCage(@Qualifier("dod") Animal animal, Timer timer) {
+    public AnimalsCage(@Qualifier("dod") Animal animal) {
         this.animal = animal;
-        this.timer = timer;
     }
 
     public void whatAnimalSay() {
         System.out.println("Say:");
         System.out.println(animal.toString());
         System.out.println("At:");
-        System.out.println(new Timer().getTime());
         System.out.println("________________________");
     }
 
